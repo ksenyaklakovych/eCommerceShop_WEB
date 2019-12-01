@@ -20,10 +20,8 @@ namespace eCommerce.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(User userModel)
         {
-            //User name = new User();
             using (commerceShopDB dbModel = new commerceShopDB())
             {
-                userModel.userId = 1;
                 dbModel.Users.Add(userModel);
                 dbModel.SaveChanges();
             }
