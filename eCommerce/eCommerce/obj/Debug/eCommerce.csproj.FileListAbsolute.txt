@@ -207,3 +207,7 @@ C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\obj\De
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\obj\Debug\eCommerce.csproj.CopyComplete
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\obj\Debug\eCommerce.dll
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\obj\Debug\eCommerce.pdb
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.Mvc.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.xml
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.Mvc.xml

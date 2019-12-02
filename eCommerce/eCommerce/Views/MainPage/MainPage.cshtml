@@ -1,0 +1,81 @@
+﻿@model PagedList.IPagedList<eCommerce.Models.Product>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "MainPage";
+}
+
+<h2>MainPage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("../MainPage/MainPage", "MainPageController", FormMethod.Get, new { @class = "form-horizontal" }))
+{
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DropDownList("Category", "категорія")
+            </div>
+            <div class="col-md-2">
+                @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2" id="btext">
+                <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+            </div>
+        </div>
+    </div>
+}
+<table class="table">
+    @*<tr>
+            <th>
+                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>*@
+    <tr>
+        <th>
+            @Html.ActionLink("Title", "MainPage", new { sortOrder = ViewBag.TitleSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Price", "MainPage", new { sortOrder = ViewBag.PriceSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Category", "MainPage", new { sortOrder = ViewBag.CategorySortParm })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.ActionLink("Add to cart", "AddToCart", new { id = item.productId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.productId })
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("MainPage",
+    new { page, sortOrder = ViewBag.CurrentSort}))
