@@ -27,6 +27,8 @@ namespace eCommerce.Controllers
             }
             ModelState.Clear();
             ViewBag.Successmessage = "Registration Succesful.";
+            Session["User_ID"] = userModel.userId;
+            Session["Username"] = userModel.username;
             return View("AddOrEdit", new User());
         }
     }
