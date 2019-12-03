@@ -78,7 +78,7 @@
             }
         }
 
-        public IRepository<Order> Dates_ranges
+        public IRepository<Order> Orders
         {
             get
             {

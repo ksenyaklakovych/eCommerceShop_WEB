@@ -5,31 +5,48 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eCommerce.Models;
+using eCommerce.BLL.Interfaces;
+using eCommerce.BLL.DTO;
+using AutoMapper;
+using eCommerce.BLL.Infrastructure;
 
 namespace eCommerce.Controllers
 {
     public class UserController : Controller
     {
-        [HttpGet]
-        public ActionResult AddOrEdit(int id=0)
-        {
-            User userModel = new User();
-            return View(userModel);
-        }
+        private IUserService userService;
 
-        [HttpPost]
-        public ActionResult AddOrEdit(User userModel)
+        public UserController(IUserService serv)
         {
-            using (commerceShopDB dbModel = new commerceShopDB())
-            {
-                dbModel.Users.Add(userModel);
-                dbModel.SaveChanges();
-            }
-            ModelState.Clear();
-            ViewBag.Successmessage = "Registration Succesful.";
-            Session["User_ID"] = userModel.userId;
-            Session["Username"] = userModel.username;
-            return View("AddOrEdit", new User());
+            this.userService = serv;
         }
+        [HttpGet]
+        public ActionResult AddOrEdit(int id = 0)
+        {
+            UserViewModel userModel = new UserViewModel();
+            return this.View(userModel);
+        }
+        [HttpPost]
+        public ActionResult AddOrEdit(UserViewModel userModel)
+        {
+            try
+            {
+                userModel.userId = this.userService.FindMaxId() + 1;
+                var userDto = new UserDTO(userModel.userId, userModel.username, userModel.password, userModel.isAdmin);
+                this.userService.CreateUser(userDto);
+                this.Session["User_ID"] = userDto.userId.ToString();
+                this.Session["Username"] = userDto.username.ToString();
+                this.Session["Password"] = userDto.password.ToString();
+                return this.RedirectToAction("StartPage", "Home");
+                //return View("AddOrEdit");
+
+            }
+            catch (ArgumentNullException)
+            {
+                this.ViewBag.DuplicateMessage = "Таке і'мя користувача вже існує.";
+                return this.View("AddOrEdit");
+            }
+        }
+        
     }
 }
