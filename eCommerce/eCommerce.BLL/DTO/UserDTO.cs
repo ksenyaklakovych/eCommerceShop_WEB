@@ -12,7 +12,7 @@
         {
         }
 
-        public UserDTO(int userId, string username, string password, string isAdmin)
+        public UserDTO(int userId, string username, string password, bool isAdmin)
         {
             this.userId = userId;
             this.username = username;
@@ -26,7 +26,7 @@
 
         public string password { get; set; }
 
-        public string isAdmin { get; set; }
+        public bool isAdmin { get; set; }
 
     }
 }

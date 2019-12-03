@@ -1,0 +1,17 @@
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.csprojAssemblyReference.cache
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.csproj.CoreCompileInputs.cache
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.BLL.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.BLL.pdb
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\AutoMapper.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.DAL.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\Ninject.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\EntityFramework.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.DAL.pdb
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.DAL.dll.config
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\AutoMapper.pdb
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\AutoMapper.xml
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\Ninject.xml
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\EntityFramework.xml
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.csproj.CopyComplete
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.dll
+C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.pdb

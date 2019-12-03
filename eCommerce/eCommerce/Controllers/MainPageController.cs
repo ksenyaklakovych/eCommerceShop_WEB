@@ -1,15 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using eCommerce.Models;
-using PagedList;
-
-namespace eCommerce.Controllers
+﻿namespace eCommerce.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using Microsoft.AspNet.Identity.Owin;
+    using PagedList.Mvc;
+    using PagedList;
+    using eCommerce.BLL.DTO;
+    using eCommerce.BLL.Infrastructure;
+    using eCommerce.BLL.Interfaces;
+    using eCommerce.BLL.Services;
+    using eCommerce.Models;
     public class MainPageController : Controller
     {
+        private IProductService productService;
+
+        public MainPageController(IProductService iserv)
+        {
+            this.productService = iserv;
+        }
         public ActionResult MainPage(int? page, string sortOrder, string Category, string maxPrice)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -17,12 +31,9 @@ namespace eCommerce.Controllers
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "";
             ViewBag.CategorySortParm = sortOrder == "Category" ? "category_desc" : "";
 
-            IEnumerable<Product> products;
-            using (commerceShopDB dbModel = new commerceShopDB())
-            {
-                products = dbModel.Products.ToList();
+            IEnumerable<ProductDTO> products=this.productService.GetAll();
+            //List<ProductViewModel> productViewModels = products.ToList();
 
-            }
             var categories = new SelectList((from i in products
                                              orderby i.category
                                              select i.category).Distinct().ToList());
@@ -43,7 +54,7 @@ namespace eCommerce.Controllers
                     products = products.OrderBy(s => s.price);
                     break;
             }
-            
+
 
             if (!string.IsNullOrEmpty(Category))
             {

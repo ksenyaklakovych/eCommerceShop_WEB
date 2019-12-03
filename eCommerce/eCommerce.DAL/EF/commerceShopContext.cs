@@ -9,11 +9,17 @@
     using eCommerce.DAL.Entities;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class commerceShopContext:DbContext
+    public partial class commerceShopContext : DbContext
     {
         public commerceShopContext()
             : base("name=shopDB")
         {
+        }
+        private string connectionString;
+
+        public commerceShopContext(string conString)
+        {
+            this.connectionString = conString;
         }
 
         public virtual DbSet<Comment> Comments { get; set; }

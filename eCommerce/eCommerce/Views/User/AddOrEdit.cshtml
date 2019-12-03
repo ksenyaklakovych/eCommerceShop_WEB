@@ -1,10 +1,9 @@
-﻿@model eCommerce.Models.User
-
+﻿@model eCommerce.Models.UserViewModel
 @{
     ViewBag.Title = "eCommerce";
 }
 
-    <h2>User Registration</h2>
+    @*<h2>User Registration</h2>*@
 
 
 @using (Html.BeginForm("AddOrEdit","User",FormMethod.Post)) 
@@ -50,7 +49,7 @@
         
         <div class="form-group">
             <div class="col-md-offset-2 col-md-2">
-            <label class="label-success">@ViewBag.SuccessMessage</label>
+            <label class="label-danger">@ViewBag.DuplicateMessage</label>
                 </div>
         </div>
     </div>
