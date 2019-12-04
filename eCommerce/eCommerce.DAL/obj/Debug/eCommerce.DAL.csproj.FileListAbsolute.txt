@@ -10,3 +10,14 @@ C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\ob
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csproj.CopyComplete
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.dll
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\eCommerce.DAL.dll.config
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\eCommerce.DAL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\eCommerce.DAL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csprojAssemblyReference.cache
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csproj.CopyComplete
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.pdb

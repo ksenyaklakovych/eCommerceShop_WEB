@@ -14,7 +14,7 @@
 
         UserDTO GetById(int? id);
 
-        //UserDTO GetByUsernamePassword(string username, string password);
+        UserDTO GetByUsernamePassword(string username, string password);
 
         IEnumerable<UserDTO> GetAll();
 

@@ -15,3 +15,19 @@ C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bi
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.csproj.CopyComplete
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.dll
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.BLL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.BLL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\AutoMapper.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.DAL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\Ninject.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.DAL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\eCommerce.DAL.dll.config
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\AutoMapper.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\AutoMapper.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\Ninject.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.csprojAssemblyReference.cache
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.csproj.CopyComplete
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.BLL\obj\Debug\eCommerce.BLL.pdb

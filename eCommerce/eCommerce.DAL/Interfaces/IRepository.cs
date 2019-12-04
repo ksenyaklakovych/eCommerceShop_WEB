@@ -13,7 +13,7 @@
 
         T Get(int id);
 
-        //T GetbyPass(string username, string password);
+        T GetbyPass(string username, string password);
 
         IEnumerable<T> Find(Func<T, bool> predicate);
 

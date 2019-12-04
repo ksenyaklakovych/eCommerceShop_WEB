@@ -68,9 +68,9 @@
             return max;
         }
 
-        //public User GetbyPass(string username, string password)
-        //{
-        //    return this.db.Users.Where(a => a.username == username && a.password == password).ToList().FirstOrDefault();
-        //}
+        public User GetbyPass(string username, string password)
+        {
+            return this.db.Users.Where(a => a.username == username && a.password == password).ToList().FirstOrDefault();
+        }
     }
 }

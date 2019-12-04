@@ -136,24 +136,23 @@
 
 
 
-        //public UserDTO GetByUsernamePassword(string username, string password)
-        //    {
-        //        try
-        //        {
-        //            var user = this.Database.Users.GetbyPass(username, Encrypt(password));
-        //            return new UserDTO
-        //            {
-        //                userId = user.userId,
-        //                username = user.username,
-        //                password = user.password,
-        //                isAdmin = user.isAdmin
-        //            };
-        //        }
-        //        catch (System.NullReferenceException)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
+        public UserDTO GetByUsernamePassword(string username, string password)
+        {
+            try
+            {
+                var user = this.Database.Users.GetbyPass(username,password);
+                return new UserDTO
+                {
+                    userId = user.userId,
+                    username = user.username,
+                    password = user.password,
+                    isAdmin = user.isAdmin
+                };
+            }
+            catch (System.NullReferenceException)
+            {
+                return null;
+            }
+        }
     }
 }

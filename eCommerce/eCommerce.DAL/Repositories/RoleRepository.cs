@@ -29,6 +29,11 @@
             return this.db.Roles.Find(id);
         }
 
+        public Role GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Role role)
         {
             this.db.Roles.Add(role);
