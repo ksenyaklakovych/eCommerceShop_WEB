@@ -20,6 +20,8 @@
         private OrderRepository orderRepository;
         private RoleRepository roleRepository;
         private RightRepository rightRepository;
+        private ContactRepository contactRepository;
+
         private bool disposed = false;
 
         public EFUnitOfWork(string connectionString)
@@ -37,6 +39,7 @@
             this.orderRepository = new OrderRepository(db);
             this.roleRepository = new RoleRepository(db);
             this.rightRepository = new RightRepository(db);
+            this.contactRepository = new ContactRepository(db);
         }
 
         public IRepository<User> Users
@@ -62,6 +65,18 @@
                 }
 
                 return this.commentRepository;
+            }
+        }
+        public IRepository<Contact> Contacts
+        {
+            get
+            {
+                if (this.contactRepository == null)
+                {
+                    this.contactRepository = new ContactRepository(this.db);
+                }
+
+                return this.contactRepository;
             }
         }
 

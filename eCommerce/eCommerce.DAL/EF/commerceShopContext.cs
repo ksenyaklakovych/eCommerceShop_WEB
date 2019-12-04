@@ -29,6 +29,8 @@
         public virtual DbSet<Right> Rights { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

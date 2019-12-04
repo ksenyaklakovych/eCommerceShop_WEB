@@ -22,6 +22,8 @@
         IRepository<Product> Products { get; }
 
         IRepository<Order> Orders { get; }
+        IRepository<Contact> Contacts { get; }
+
 
         void Save();
     }
