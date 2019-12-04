@@ -29,6 +29,11 @@
             return this.db.Rights.Find(id);
         }
 
+        public Right GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Right r)
         {
             this.db.Rights.Add(r);

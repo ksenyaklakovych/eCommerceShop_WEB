@@ -227,3 +227,23 @@ C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ni
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Mvc.xml
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.DAL.pdb
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.DAL.dll.config
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\AutoMapper.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.BLL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Common.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Common.WebHost.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Mvc.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.Mvc.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.DAL.dll
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.BLL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\AutoMapper.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\AutoMapper.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Common.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Common.WebHost.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\Ninject.Web.Mvc.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\PagedList.Mvc.xml
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.DAL.pdb
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce\bin\eCommerce.DAL.dll.config

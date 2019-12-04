@@ -29,6 +29,11 @@
             return this.db.Comments.Find(id);
         }
 
+        public Comment GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Comment comment)
         {
             this.db.Comments.Add(comment);

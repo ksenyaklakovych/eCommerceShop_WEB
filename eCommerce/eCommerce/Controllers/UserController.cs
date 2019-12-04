@@ -37,7 +37,7 @@ namespace eCommerce.Controllers
                 this.Session["User_ID"] = userDto.userId.ToString();
                 this.Session["Username"] = userDto.username.ToString();
                 this.Session["Password"] = userDto.password.ToString();
-                return this.RedirectToAction("StartPage", "Home");
+                return this.RedirectToAction("MainPage", "MainPage");
                 //return View("AddOrEdit");
 
             }
@@ -47,6 +47,30 @@ namespace eCommerce.Controllers
                 return this.View("AddOrEdit");
             }
         }
-        
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserViewModel userModel)
+        {
+            //this.ModelState.Clear();
+            var obj = this.userService.GetByUsernamePassword(userModel.username, userModel.password);
+            if (obj != null)
+            {
+                this.Session["User_ID"] = obj.userId.ToString();
+                this.Session["Username"] = obj.username.ToString();
+                this.Session["Password"] = obj.password.ToString();
+                return this.RedirectToAction("MainPage", "MainPage");
+            }
+            else
+            {
+                this.ViewBag.DuplicateMessage = "Неправильне і'мя користувача або пароль.";
+                return this.View("Login");
+            }
+        }
     }
 }

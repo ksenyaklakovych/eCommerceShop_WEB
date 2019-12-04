@@ -29,6 +29,11 @@
             return this.db.Rates.Find(id);
         }
 
+        public Rate GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Rate r)
         {
             this.db.Rates.Add(r);

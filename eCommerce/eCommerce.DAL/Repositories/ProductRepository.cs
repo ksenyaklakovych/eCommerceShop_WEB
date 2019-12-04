@@ -29,6 +29,11 @@
             return this.db.Products.Find(id);
         }
 
+        public Product GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Product pr)
         {
             this.db.Products.Add(pr);

@@ -29,6 +29,11 @@
             return this.db.Orders.Find(id);
         }
 
+        public Order GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(Order o)
         {
             this.db.Orders.Add(o);
