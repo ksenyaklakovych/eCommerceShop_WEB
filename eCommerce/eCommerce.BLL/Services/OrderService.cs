@@ -74,6 +74,11 @@
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Order>, List<OrderDTO>>(this.Database.Orders.GetAll());
         }
+        public IEnumerable<ProductDTO> GetAllProducts()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Product>, List<ProductDTO>>(this.Database.Products.GetAll());
+        }
 
         public void Dispose(int id)
         {

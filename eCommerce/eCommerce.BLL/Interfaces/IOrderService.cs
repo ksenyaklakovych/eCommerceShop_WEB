@@ -21,6 +21,8 @@
         int FindMaxId();
 
         IEnumerable<OrderDTO> GetAllOrders();
+        IEnumerable<ProductDTO> GetAllProducts();
+
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);
         ////void Create(string username, string password);

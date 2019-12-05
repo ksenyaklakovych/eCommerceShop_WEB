@@ -8,12 +8,10 @@
 <h2>MainPage</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Open cart", "../Order/ShoppingCart")
 </p>
 @using (Html.BeginForm("../MainPage/MainPage", "MainPageController", FormMethod.Get, new { @class = "form-horizontal" }))
 {
-    <link rel="stylesheet" href="~/Content/style.css">
-
     <div class="container">
         <div class="row">
             <div class="col-md-2">
@@ -67,9 +65,8 @@
                 @Html.DisplayFor(modelItem => item.category)
             </td>
             <td>
-                @Html.ActionLink("Add to cart", "AddToCart", new { id = item.productId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.productId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.productId })
+                @Html.ActionLink("Add to cart", "../Order/AddToCart", new { productId = item.productId }) |
+                @Html.ActionLink("Details", "Details", new { productId = item.productId }) |
             </td>
         </tr>
     }

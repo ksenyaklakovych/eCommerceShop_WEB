@@ -20,6 +20,13 @@
             this.quantity = quantity;
             this.payed = payed;
         }
+        public OrderDTO(int userId, int productId, int quantity, bool payed)
+        {
+            this.userId = userId;
+            this.productId = productId;
+            this.quantity = quantity;
+            this.payed = payed;
+        }
 
         public int orderId { get; set; }
 
