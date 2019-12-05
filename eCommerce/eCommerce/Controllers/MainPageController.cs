@@ -31,7 +31,7 @@
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "";
             ViewBag.CategorySortParm = sortOrder == "Category" ? "category_desc" : "";
 
-            IEnumerable<ProductDTO> products=this.productService.GetAll();
+            IEnumerable<ProductDTO> products = this.productService.GetAll();
             //List<ProductViewModel> productViewModels = products.ToList();
 
             var categories = new SelectList((from i in products
@@ -70,5 +70,6 @@
             int pageNumber = (page ?? 1);
             return View(products.ToPagedList(pageNumber, pageSize));
         }
+       
     }
 }
