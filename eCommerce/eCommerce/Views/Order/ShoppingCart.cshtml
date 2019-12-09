@@ -40,10 +40,11 @@
             @Html.DisplayFor(modelItem => item.totalPrice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Remove", "Remove", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit quantity", "EditQuantity", new { product_id = item.productId }) |
+            @Html.ActionLink("Remove", "RemoveFromCart", new { product_id = item.productId  })
         </td>
     </tr>
 }
 
 </table>
+<input type="button" value="Checkout" onclick="location.href='@Url.Action("Checkout", "Order")'" />
