@@ -30,6 +30,11 @@
             return max;
         }
 
+        public int FindMaxIdDelivery()
+        {
+            int max = this.Database.Deliveries.MaxId();
+            return max;
+        }
         public void CreateOrder(OrderDTO o)
         {
             Order order = new Order
@@ -44,6 +49,22 @@
             this.Database.Orders.Create(order);
             this.Database.Save();
         }
+        public void CreateDelivery(DeliveryDTO o)
+        {
+            Delivery d = new Delivery
+            {
+                deliveryId = o.deliveryId,
+                totalPrice = o.totalPrice,
+                paymentType = o.paymentType,
+                fullName = o.fullName,
+                address = o.address,
+
+            };
+
+            this.Database.Deliveries.Create(d);
+            this.Database.Save();
+        }
+
 
 
         public OrderDTO GetById(int? id)
