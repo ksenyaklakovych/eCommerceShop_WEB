@@ -50,7 +50,7 @@ namespace eCommerce.Controllers
                         found = true;
                     }
                 }
-                if (found==false)
+                if (found == false)
                 {
                     uniqueOrders.Add(productOrderModels[i]);
                 }
@@ -58,6 +58,34 @@ namespace eCommerce.Controllers
             IEnumerable<ProductOrderModel> viewModels = uniqueOrders;
             return View(viewModels);
 
+        }
+        public ActionResult RemoveFromCart(int? product_id)
+        {
+            int user_session = int.Parse(Session["User_ID"].ToString());
+            var orders = this.orderService.GetAllOrders().Where(e => e.productId == product_id && e.userId == user_session).Select(e => e.orderId).ToList();
+            foreach (var item in orders)
+            {
+                this.orderService.Dispose(item);
+            }
+            return this.RedirectToAction("ShoppingCart", "Order");
+        }
+        public ActionResult EditQuantity(int? product_id)
+        {
+            return this.RedirectToAction("ShoppingCart", "Order");
+        }
+        public ActionResult Checkout()
+        {
+            IEnumerable<ProductDTO> products = this.orderService.GetAllProducts();
+            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders();
+
+            List<ProductOrderModel> productOrderModels = (from pr in products
+                                                          from o in orders
+                                                          where pr.productId == o.productId && o.payed==false
+                                                          select new ProductOrderModel(pr.productId, o.userId, pr.title, pr.price, pr.category, pr.commentsEnabled, o.quantity, o.payed, o.quantity * pr.price)).ToList();
+            int user_session = int.Parse(Session["User_ID"].ToString());
+            int totalPrice = productOrderModels.Where(e => e.userId == user_session).Select(e => e.price).Sum();
+            this.ViewBag.totalPrice = totalPrice;
+            return this.View();
         }
     }
 }

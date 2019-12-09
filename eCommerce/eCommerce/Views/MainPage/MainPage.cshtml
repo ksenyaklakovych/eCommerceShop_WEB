@@ -6,10 +6,10 @@
 }
 
 <h2>MainPage</h2>
-
 <p>
     @Html.ActionLink("Open cart", "../Order/ShoppingCart")
 </p>
+
 @using (Html.BeginForm("../MainPage/MainPage", "MainPageController", FormMethod.Get, new { @class = "form-horizontal" }))
 {
     <div class="container">
