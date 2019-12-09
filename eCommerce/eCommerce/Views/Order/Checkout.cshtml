@@ -1,55 +1,53 @@
 ﻿@model eCommerce.Models.DeliveryModel
 
 @{
-                /**/
-
-                ViewBag.Title = "Checkout page";
+    ViewBag.Title = "Checkout page";
 }
-@using (Html.BeginForm("AddOrEdit", "User", FormMethod.Post))
+@using (Html.BeginForm("CheckoutPay", "Order", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-<div class="form-horizontal">
-    <hr />
-    <h2>Checkout</h2>
-    <p>Total cost:</p>@ViewBag.totalPrice
-    <p>Payment: </p>
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.paymentType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.paymentType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.paymentType, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <hr />
+        <h2>Checkout</h2>
+        <p>Total cost:</p>@ViewBag.totalPrice
+        <p>Payment: </p>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.paymentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paymentType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.paymentType, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    <p>Delivery details:</p>
-    <div class="form-group">
-        @Html.LabelFor(model => model.fullName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
+        <p>Delivery details:</p>
+        <div class="form-group">
+            @Html.LabelFor(model => model.fullName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control", @value="bred pit" } })
+                @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @type = "textarea" } })
-                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @type = "textarea" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Checkout" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-danger">@ViewBag.DuplicateMessage</label>
             </div>
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit" class="btn btn-default" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-2">
-            <label class="label-danger">@ViewBag.DuplicateMessage</label>
-        </div>
-    </div>
-</div>
 }

@@ -21,6 +21,7 @@
         private RoleRepository roleRepository;
         private RightRepository rightRepository;
         private ContactRepository contactRepository;
+        private DeliveryRepository deliveryRepository;
 
         private bool disposed = false;
 
@@ -40,6 +41,7 @@
             this.roleRepository = new RoleRepository(db);
             this.rightRepository = new RightRepository(db);
             this.contactRepository = new ContactRepository(db);
+            this.deliveryRepository = new DeliveryRepository(db);
         }
 
         public IRepository<User> Users
@@ -103,6 +105,18 @@
                 }
 
                 return this.orderRepository;
+            }
+        }
+        public IRepository<Delivery> Deliveries
+        {
+            get
+            {
+                if (this.deliveryRepository == null)
+                {
+                    this.deliveryRepository = new DeliveryRepository(this.db);
+                }
+
+                return this.deliveryRepository;
             }
         }
 

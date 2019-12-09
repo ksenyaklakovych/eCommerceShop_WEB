@@ -34,7 +34,7 @@ namespace eCommerce.Controllers
 
             List<ProductOrderModel> productOrderModels = (from pr in products
                                                           from o in orders
-                                                          where pr.productId == o.productId
+                                                          where pr.productId == o.productId && o.payed==false
                                                           select new ProductOrderModel(pr.productId, o.userId, pr.title, pr.price, pr.category, pr.commentsEnabled, o.quantity, o.payed, o.quantity * pr.price)).ToList();
 
             List<ProductOrderModel> uniqueOrders = new List<ProductOrderModel>();
@@ -80,12 +80,28 @@ namespace eCommerce.Controllers
 
             List<ProductOrderModel> productOrderModels = (from pr in products
                                                           from o in orders
-                                                          where pr.productId == o.productId && o.payed==false
+                                                          where pr.productId == o.productId && o.payed == false
                                                           select new ProductOrderModel(pr.productId, o.userId, pr.title, pr.price, pr.category, pr.commentsEnabled, o.quantity, o.payed, o.quantity * pr.price)).ToList();
             int user_session = int.Parse(Session["User_ID"].ToString());
             int totalPrice = productOrderModels.Where(e => e.userId == user_session).Select(e => e.price).Sum();
             this.ViewBag.totalPrice = totalPrice;
             return this.View();
+        }
+        public ActionResult CheckoutPay(DeliveryModel deliveryModel)
+        {
+            deliveryModel.deliveryId = this.orderService.FindMaxIdDelivery() + 1;
+            var delDto = new DeliveryDTO(deliveryModel.deliveryId, deliveryModel.totalPrice, deliveryModel.paymentType, deliveryModel.fullName, deliveryModel.address);
+            this.orderService.CreateDelivery(delDto);
+            int user_session = int.Parse(Session["User_ID"].ToString());
+            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e=>e.payed==false && 
+            e.userId== user_session);
+            foreach (var item in orders)
+            {
+                orderService.Dispose(item.orderId);
+                int next_id = this.orderService.FindMaxId() + 1;
+                orderService.CreateOrder(new OrderDTO(next_id,user_session, item.productId, item.quantity, true));
+            }
+            return this.RedirectToAction("MainPage", "MainPage");
         }
     }
 }

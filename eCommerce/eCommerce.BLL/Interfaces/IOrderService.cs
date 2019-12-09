@@ -11,6 +11,7 @@
     public interface IOrderService
     {
         void CreateOrder(OrderDTO orderDTO);
+        void CreateDelivery(DeliveryDTO orderDTO); 
 
         OrderDTO GetById(int? id);
 
@@ -19,6 +20,7 @@
         void Dispose(int id);
 
         int FindMaxId();
+        int FindMaxIdDelivery();
 
         IEnumerable<OrderDTO> GetAllOrders();
         IEnumerable<ProductDTO> GetAllProducts();
