@@ -15,7 +15,7 @@
             this.Bind<IUserService>().To<UserService>();
             this.Bind<IProductService>().To<ProductService>();
             this.Bind<IOrderService>().To<OrderService>();
-
+            this.Bind<ICommentService>().To<CommentService>();
 
         }
     }

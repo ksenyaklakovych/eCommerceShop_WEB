@@ -1,0 +1,56 @@
+﻿@model IEnumerable<eCommerce.Models.ProductOrderModel>
+
+@{
+    ViewBag.Title = "Shopping history";
+}
+
+<h2>Shopping history</h2>
+
+<p>
+    @Html.ActionLink("Back to main page", "../MainPage/MainPage")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payed)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.productId  }) |
+            @Html.ActionLink("Write a review", "../Review/AddReview", new { id = item.productId })
+        </td>
+    </tr>
+}
+
+</table>
