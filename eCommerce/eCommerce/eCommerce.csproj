@@ -191,6 +191,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
@@ -200,6 +201,7 @@
     </Compile>
     <Compile Include="Models\DeliveryModel.cs" />
     <Compile Include="Models\ProductOrderModel.cs" />
+    <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -269,6 +271,8 @@
     <Content Include="Views\Order\AddToCart.cshtml" />
     <Content Include="Views\Order\ShoppingCart.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Order\History.cshtml" />
+    <Content Include="Views\Review\AddReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

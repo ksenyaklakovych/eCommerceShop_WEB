@@ -32,7 +32,6 @@
             ViewBag.CategorySortParm = sortOrder == "Category" ? "category_desc" : "";
 
             IEnumerable<ProductDTO> products = this.productService.GetAll();
-            //List<ProductViewModel> productViewModels = products.ToList();
 
             var categories = new SelectList((from i in products
                                              orderby i.category

@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Open cart", "../Order/ShoppingCart")
 </p>
+<p>
+    @Html.ActionLink("Shopping history", "../Order/History")
+</p>
 
 @using (Html.BeginForm("../MainPage/MainPage", "MainPageController", FormMethod.Get, new { @class = "form-horizontal" }))
 {

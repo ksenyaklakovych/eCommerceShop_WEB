@@ -24,12 +24,16 @@
 
         public int deliveryId { get; set; }
 
+        [DisplayName("Total cost")]
         public int totalPrice { get; set; }
 
+        [DisplayName("Payment type")]
         public string paymentType { get; set; }
 
+        [DisplayName("Full name")]
         public string fullName { get; set; }
 
+        [DisplayName("Shipping address")]
         public string address { get; set; }
 
     }
