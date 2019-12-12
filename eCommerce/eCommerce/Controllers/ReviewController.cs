@@ -42,14 +42,28 @@
         [HttpPost]
         public ActionResult AddReview(int id, CommentViewModel commentViewModel)
         {
-            commentViewModel.commentId = this.commentService.FindMaxId() + 1;
-            commentViewModel.userId = int.Parse(this.Session["User_ID"].ToString());
-            commentViewModel.productId = id;
+            int session_id= int.Parse(this.Session["User_ID"].ToString());
+            try
+            {
+                this.commentService.GetAll().Where(c => c.productId == id && c.userId == session_id).First();
+                this.ViewBag.DuplicateMessage = "You have already written a review to this product.";
+                return this.View();
+            }
+            catch
+            {
+                commentViewModel.commentId = this.commentService.FindMaxId() + 1;
+                commentViewModel.userId = session_id;
+                commentViewModel.productId = id;
 
-            var commentDTO = new CommentDTO(commentViewModel.commentId, commentViewModel.productId, commentViewModel.userId,commentViewModel.message);
-            this.commentService.CreateComment(commentDTO);
+                int rate_id = this.commentService.FindMaxIdRate() + 1;
+                var rateDTO = new RateDTO(rate_id, id, commentViewModel.rate);
+                var commentDTO = new CommentDTO(commentViewModel.commentId, commentViewModel.productId, commentViewModel.userId, commentViewModel.message);
+                this.commentService.CreateComment(commentDTO);
+                this.commentService.CreateRate(rateDTO);
 
-            return this.RedirectToAction($"../MainPage/MainPage");
+                return this.RedirectToAction($"../Order/History");
+            }
+
         }
     }
 }

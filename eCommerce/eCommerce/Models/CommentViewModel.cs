@@ -14,6 +14,8 @@
 
         public int userId { get; set; }
 
-        public string message { get; set; }
+        public string message { get; set; }                                                                                                                                                            
+
+        public int rate {get; set; }
     }
 }

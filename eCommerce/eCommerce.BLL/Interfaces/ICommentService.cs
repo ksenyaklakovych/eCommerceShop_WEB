@@ -12,11 +12,15 @@
     {
         void CreateComment(CommentDTO DTO);
 
+        void CreateRate(RateDTO DTO);
+
         CommentDTO GetById(int? id);
 
         void Dispose(int id);
 
         int FindMaxId();
+
+        int FindMaxIdRate();
 
         IEnumerable<CommentDTO> GetAll();
 

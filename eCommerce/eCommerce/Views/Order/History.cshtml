@@ -47,8 +47,11 @@
             @Html.DisplayFor(modelItem => item.payed)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.productId  }) |
-            @Html.ActionLink("Write a review", "../Review/AddReview", new { id = item.productId })
+            @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+            @if (item.commentsEnabled == true)
+            {
+                @Html.ActionLink("Write a review", "../Review/AddReview", new { id = item.productId })
+            }
         </td>
     </tr>
 }
