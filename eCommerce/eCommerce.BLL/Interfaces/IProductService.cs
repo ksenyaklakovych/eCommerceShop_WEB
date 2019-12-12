@@ -10,7 +10,7 @@
 
     public interface IProductService
     {
-        void CreateOrder(ProductDTO ProductDTO);
+        void CreateProduct(ProductDTO ProductDTO);
 
         ProductDTO GetById(int? id);
 
@@ -21,6 +21,8 @@
         int FindMaxId();
 
         IEnumerable<ProductDTO> GetAll();
+        IEnumerable<CommentDTO> GetAllCommments();
+
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);
         ////void Create(string username, string password);
