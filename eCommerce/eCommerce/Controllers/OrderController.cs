@@ -55,6 +55,8 @@ namespace eCommerce.Controllers
                     uniqueOrders.Add(productOrderModels[i]);
                 }
             }
+            int totalPrice = uniqueOrders.Select(e => e.price * e.quantity).Sum();
+            this.ViewBag.totalPrice = totalPrice;
             IEnumerable<ProductOrderModel> viewModels = uniqueOrders;
             return View(viewModels);
 
@@ -69,10 +71,34 @@ namespace eCommerce.Controllers
             }
             return this.RedirectToAction("ShoppingCart", "Order");
         }
-        public ActionResult EditQuantity(int? product_id)
+
+        [HttpPost]
+        public ActionResult EditQuantity(int quantity, int product_id)
         {
+            int user_session = int.Parse(Session["User_ID"].ToString());
+            var orders = this.orderService.GetAllOrders().Where(e => e.productId == product_id && e.userId == user_session).Select(e => e.orderId).ToList();
+            int number_prev = orders.Count();
+            if (number_prev<quantity)
+            {
+                int difference = quantity - number_prev;
+                for (int i = 0; i < difference; i++)
+                {
+                    int order_id = this.orderService.FindMaxId() + 1;
+                    this.orderService.CreateOrder(new OrderDTO(order_id, user_session, product_id, 1, false));
+                }
+            }
+            else if(number_prev > quantity)
+            {
+                int difference = number_prev - quantity;
+                for (int i = 0; i < difference; i++)
+                {
+                    this.orderService.Dispose(orders[i]);
+                }
+            }
+            
             return this.RedirectToAction("ShoppingCart", "Order");
         }
+
         public ActionResult Checkout()
         {
             IEnumerable<ProductDTO> products = this.orderService.GetAllProducts();
@@ -103,7 +129,7 @@ namespace eCommerce.Controllers
                 int next_id = this.orderService.FindMaxId() + 1;
                 orderService.CreateOrder(new OrderDTO(next_id, user_session, item.productId, item.quantity, true));
             }
-            return this.RedirectToAction("MainPage", "MainPage");
+            return this.RedirectToAction("History");
         }
 
         public ActionResult History()

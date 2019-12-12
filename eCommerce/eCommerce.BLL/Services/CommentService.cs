@@ -30,6 +30,12 @@
             return max;
         }
 
+        public int FindMaxIdRate()
+        {
+            int max = this.Database.Rates.MaxId();
+            return max;
+        }
+
         public void CreateComment(CommentDTO o)
         {
             Comment d = new Comment
@@ -44,6 +50,18 @@
             this.Database.Save();
         }
 
+        public void CreateRate(RateDTO o)
+        {
+            Rate d = new Rate
+            {
+               rateID = o.rateID,
+            productId = o.productId,
+            rate1 = o.rate1,
+            };
+
+            this.Database.Rates.Create(d);
+            this.Database.Save();
+        }
 
         public CommentDTO GetById(int? id)
         {
