@@ -25,3 +25,7 @@ C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\ob
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csproj.GenerateResource.cache
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.contactmigration.resources
 C:\універ\3 курс\1 сем\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.deliveryMigration.resources
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.newmigration.resources
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.contactmigration.resources
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.Migrations.deliveryMigration.resources
+C:\Users\Andriy\Documents\eCommerceShop_WEB\eCommerce\eCommerce.DAL\obj\Debug\eCommerce.DAL.csproj.GenerateResource.cache

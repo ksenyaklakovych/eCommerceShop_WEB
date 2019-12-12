@@ -30,7 +30,7 @@
             return max;
         }
 
-        public void CreateOrder(ProductDTO o)
+        public void CreateProduct(ProductDTO o)
         {
             Product product = new Product
             {
@@ -73,6 +73,12 @@
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Product>, List<ProductDTO>>(this.Database.Products.GetAll());
+        }
+
+        public IEnumerable<CommentDTO> GetAllCommments()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Comment, CommentDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Comment>, List<CommentDTO>>(this.Database.Comments.GetAll());
         }
 
         public void Dispose(int id)

@@ -16,5 +16,14 @@
         public string category { get; set; }
 
         public bool commentsEnabled { get; set; }
+
+        public ProductViewModel(int productId, string title, int price, string category, bool commentsEnabled)
+        {
+            this.productId = productId;
+            this.title = title;
+            this.price = price;
+            this.category = category;
+            this.commentsEnabled = commentsEnabled;
+        }
     }
 }
