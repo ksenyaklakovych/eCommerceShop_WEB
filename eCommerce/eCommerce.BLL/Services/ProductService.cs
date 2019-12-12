@@ -75,7 +75,7 @@
             return mapper.Map<IEnumerable<Product>, List<ProductDTO>>(this.Database.Products.GetAll());
         }
 
-        public IEnumerable<CommentDTO> GetAllCommments()
+        public IEnumerable<CommentDTO> GetAllComments()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Comment, CommentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Comment>, List<CommentDTO>>(this.Database.Comments.GetAll());

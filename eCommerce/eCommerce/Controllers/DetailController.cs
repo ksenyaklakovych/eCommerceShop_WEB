@@ -28,11 +28,11 @@ namespace eCommerce.Controllers
 
         public ActionResult ProductDetail(int Id)
         {
-            var prod= (productService.GetAll().Where(a => a.productId == Id).First());
-            ProductViewModel detailProduct = new ProductViewModel(prod.productId, prod.title,prod.price,prod.category,prod.commentsEnabled);
-            IEnumerable<CommentDTO> commments = this.productService.GetAllCommments().Where(a => a.productId == Id);
+            var prod = (productService.GetAll().Where(a => a.productId == Id).First());
+            ProductViewModel detailProduct = new ProductViewModel(prod.productId, prod.title, prod.price, prod.category, prod.commentsEnabled);
+            var commments = productService.GetAllComments().Where(a => a.productId == Id);
             ViewBag.RelaventComments = commments;
-            return View(detailProduct);                                                                    
+            return View(detailProduct);
         }
 
     }
