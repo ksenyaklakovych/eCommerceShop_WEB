@@ -21,7 +21,7 @@
         int FindMaxId();
 
         IEnumerable<ProductDTO> GetAll();
-        IEnumerable<CommentDTO> GetAllCommments();
+        IEnumerable<CommentDTO> GetAllComments();
 
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);
