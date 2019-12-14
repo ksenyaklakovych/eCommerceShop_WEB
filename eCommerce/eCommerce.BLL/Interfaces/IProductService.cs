@@ -14,7 +14,7 @@
 
         void CreateRate(RateDTO RateDTO);
 
-
+        void Update(ProductDTO pr);
         ProductDTO GetById(int? id);
 
         //IEnumerable<OrderDTO> GetAll();

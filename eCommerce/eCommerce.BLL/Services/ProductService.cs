@@ -62,7 +62,19 @@
             this.Database.Rates.Create(rate);
             this.Database.Save();
         }
+        public void Update(ProductDTO o)
+        {
+            Product product = new Product
+            {
+                productId = o.productId,
+                title = o.title,
+                price = o.price,
+                category = o.category,
+                commentsEnabled = o.commentsEnabled
+            };
 
+            this.Database.Products.Update(product);
+          }
 
         public ProductDTO GetById(int? id)
         {
@@ -161,7 +173,7 @@
                 // convert data to byte array
                 byte[] byteData = Encoding.UTF8.GetBytes(strData);
 
-                // encrypt 
+                // encrypt
                 DESCryptoServiceProvider objDES = new DESCryptoServiceProvider();
                 MemoryStream objMemoryStream = new MemoryStream();
                 CryptoStream objCryptoStream = new CryptoStream(objMemoryStream, objDES.CreateEncryptor(byteKey, byteVector), CryptoStreamMode.Write);
@@ -178,6 +190,7 @@
 
             return strValue;
         }
+
 
 
 
