@@ -47,7 +47,7 @@
             @Html.DisplayFor(modelItem => item.commentsEnabled)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+            @Html.ActionLink("Edit", "EditProduct", new { id = item.productId }) |
             @Html.ActionLink("Details", "Details", new { id = item.productId }) |
             @Html.ActionLink("Delete", "DeleteProduct", new {  id=item.productId  })
         </td>

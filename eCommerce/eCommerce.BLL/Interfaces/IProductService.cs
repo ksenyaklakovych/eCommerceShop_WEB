@@ -25,6 +25,7 @@
 
         IEnumerable<ProductDTO> GetAll();
         IEnumerable<CommentDTO> GetAllComments();
+        IEnumerable<RateDTO> GetAllRates();
         IEnumerable<OrderDTO> GetAllOrders();
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);
