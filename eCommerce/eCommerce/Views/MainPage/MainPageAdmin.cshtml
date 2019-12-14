@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "MainPageAdmin";
+}
+
+<h2>Admin page</h2>
+<h3>Products</h3>
+<div>
+    @Html.ActionLink("Create a product", "../Product/Create", new { @*productId = item.productId*@})
+</div>
+<div>
+    @Html.ActionLink("View all products", "../MainPage/AllProducts", new { @*productId = item.productId*@})
+</div>
+<h3>Comments</h3>
+<div>
+    @Html.ActionLink("View all comments", "../Comment/AllComments", new { @*productId = item.productId*@})
+</div>
+<h3>Deliveries</h3>
+<div>
+    @Html.ActionLink("View all deliveries", "../Delivery/AllDeliveries", new { @*productId = item.productId*@})
+</div>
+<h3>Users</h3>
+<div>
+    @Html.ActionLink("View all users", "../User/AllUsers", new { @*productId = item.productId*@})
+</div>
