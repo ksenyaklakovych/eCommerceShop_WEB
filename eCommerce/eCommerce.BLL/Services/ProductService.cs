@@ -80,13 +80,35 @@
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Comment, CommentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Comment>, List<CommentDTO>>(this.Database.Comments.GetAll());
         }
-
+        public IEnumerable<OrderDTO> GetAllOrders()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Order>, List<OrderDTO>>(this.Database.Orders.GetAll());
+        }
         public void Dispose(int id)
         {
             var user = this.Database.Products.Get(id);
             if (user != null)
             {
                 this.Database.Products.Delete(id);
+                this.Database.Save();
+            }
+        }
+        public void DisposeOrder(int id)
+        {
+            var user = this.Database.Orders.Get(id);
+            if (user != null)
+            {
+                this.Database.Orders.Delete(id);
+                this.Database.Save();
+            }
+        }
+        public void DisposeComment(int id)
+        {
+            var user = this.Database.Comments.Get(id);
+            if (user != null)
+            {
+                this.Database.Comments.Delete(id);
                 this.Database.Save();
             }
         }

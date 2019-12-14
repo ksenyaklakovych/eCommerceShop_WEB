@@ -68,7 +68,37 @@
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(products.ToPagedList(pageNumber, pageSize));
+        } 
+        public ActionResult MainPageAdmin()
+        {
+            if (this.Session["isAdmin"]==null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+            return this.View();
         }
-       
+        public ActionResult AllProducts()
+        {
+            IEnumerable<ProductDTO> products = this.productService.GetAll();
+
+            return this.View(products);
+        }
+        public ActionResult DeleteProduct(int id)
+        {
+            var allComentsToThisProduct = this.productService.GetAllComments().Where(e => e.productId == id);
+            foreach (var item in allComentsToThisProduct)
+            {
+                this.productService.DisposeComment(item.commentId);
+            }
+            var allOrdersToThisProduct = this.productService.GetAllOrders().Where(e => e.productId == id);
+            foreach (var item in allOrdersToThisProduct)
+            {
+                this.productService.DisposeOrder(item.orderId);
+            }
+            this.productService.Dispose(id);
+            
+            return this.RedirectToAction("AllProducts", "MainPage");
+        }
+
     }
 }

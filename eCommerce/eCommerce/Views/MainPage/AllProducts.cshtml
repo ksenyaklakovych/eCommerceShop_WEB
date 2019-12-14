@@ -1,0 +1,57 @@
+﻿@model IEnumerable<eCommerce.BLL.DTO.ProductDTO>
+
+@{
+    ViewBag.Title = "AllProducts";
+}
+
+<h2>AllProducts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commentsEnabled)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.productId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentsEnabled)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+            @Html.ActionLink("Delete", "DeleteProduct", new {  id=item.productId  })
+        </td>
+    </tr>
+}
+
+</table>

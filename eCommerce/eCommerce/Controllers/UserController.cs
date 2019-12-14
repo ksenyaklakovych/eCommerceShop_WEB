@@ -34,11 +34,7 @@ namespace eCommerce.Controllers
                 userModel.userId = this.userService.FindMaxId() + 1;
                 var userDto = new UserDTO(userModel.userId, userModel.username, userModel.password, userModel.isAdmin);
                 this.userService.CreateUser(userDto);
-                this.Session["User_ID"] = userDto.userId.ToString();
-                this.Session["Username"] = userDto.username.ToString();
-                this.Session["Password"] = userDto.password.ToString();
-                return this.RedirectToAction("MainPage", "MainPage");
-                //return View("AddOrEdit");
+                return this.RedirectToAction("Login", "User");
 
             }
             catch (ArgumentNullException)
@@ -57,9 +53,16 @@ namespace eCommerce.Controllers
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
-            //this.ModelState.Clear();
             var obj = this.userService.GetByUsernamePassword(userModel.username, userModel.password);
-            if (obj != null)
+            if (obj != null && obj.isAdmin==true)
+            {
+                this.Session["isAdmin"] = "true";
+                this.Session["User_ID"] = obj.userId.ToString();
+                this.Session["Username"] = obj.username.ToString();
+                this.Session["Password"] = obj.password.ToString();
+                return this.RedirectToAction("MainPageAdmin", "MainPage");
+            }
+            else if (obj != null)
             {
                 this.Session["User_ID"] = obj.userId.ToString();
                 this.Session["Username"] = obj.username.ToString();

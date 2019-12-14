@@ -17,12 +17,15 @@
         //IEnumerable<OrderDTO> GetAll();
 
         void Dispose(int id);
+        void DisposeOrder(int id);
+        void DisposeComment(int id);
+
 
         int FindMaxId();
 
         IEnumerable<ProductDTO> GetAll();
         IEnumerable<CommentDTO> GetAllComments();
-
+        IEnumerable<OrderDTO> GetAllOrders();
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);
         ////void Create(string username, string password);
