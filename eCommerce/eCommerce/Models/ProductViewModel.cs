@@ -19,6 +19,9 @@
         public bool commentsEnabled { get; set; }
         public int rate { get; set; }
 
+        public ProductViewModel()
+        {
+        }
         public ProductViewModel(ProductDTO p)
         {
             this.productId = p.productId;

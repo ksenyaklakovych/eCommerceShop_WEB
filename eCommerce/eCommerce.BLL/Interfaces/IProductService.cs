@@ -12,6 +12,9 @@
     {
         void CreateProduct(ProductDTO ProductDTO);
 
+        void CreateRate(RateDTO RateDTO);
+
+
         ProductDTO GetById(int? id);
 
         //IEnumerable<OrderDTO> GetAll();
@@ -22,6 +25,8 @@
 
 
         int FindMaxId();
+        int FindMaxIdRate();
+
 
         IEnumerable<ProductDTO> GetAll();
         IEnumerable<CommentDTO> GetAllComments();

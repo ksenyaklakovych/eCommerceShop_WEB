@@ -30,6 +30,12 @@
             return max;
         }
 
+        public int FindMaxIdRate()
+        {
+            int max = this.Database.Rates.MaxId();
+            return max;
+        }
+
         public void CreateProduct(ProductDTO o)
         {
             Product product = new Product
@@ -42,6 +48,18 @@
             };
 
             this.Database.Products.Create(product);
+            this.Database.Save();
+        }
+
+        public void CreateRate(RateDTO r)
+        {
+            Rate rate = new Rate()
+            {
+                rateID = r.rateID,
+                productId = r.productId,
+                rate1 = r.rate1
+            };
+            this.Database.Rates.Create(rate);
             this.Database.Save();
         }
 
