@@ -80,6 +80,11 @@
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Comment, CommentDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Comment>, List<CommentDTO>>(this.Database.Comments.GetAll());
         }
+        public IEnumerable<RateDTO> GetAllRates()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Rate, RateDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Rate>, List<RateDTO>>(this.Database.Rates.GetAll());
+        }
         public IEnumerable<OrderDTO> GetAllOrders()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>()).CreateMapper();
