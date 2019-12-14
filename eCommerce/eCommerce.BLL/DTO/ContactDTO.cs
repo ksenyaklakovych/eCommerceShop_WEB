@@ -13,7 +13,7 @@
 
         }
 
-        public ContactDTO( string contactId, string fullName, string email, string message) 
+        public ContactDTO( int contactId, string fullName, string email, string message) 
         {
             this.contactId = contactId;
             this.fullName = fullName;
@@ -21,7 +21,7 @@
             this.message = message;
         }
 
-        public string contactId { get; set; }
+        public int contactId { get; set; }
 
         public string fullName { get; set; }
 

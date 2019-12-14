@@ -191,6 +191,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
     <Compile Include="Models\ProductOrderModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
@@ -278,6 +280,7 @@
     <Content Include="Views\MainPage\MainPageAdmin.cshtml" />
     <Content Include="Views\MainPage\AllProducts.cshtml" />
     <Content Include="Views\MainPage\EditProduct.cshtml" />
+    <Content Include="Views\Contact\ContactForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
