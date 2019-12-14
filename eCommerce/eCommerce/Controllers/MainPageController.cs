@@ -115,15 +115,17 @@
 
             return this.RedirectToAction("AllProducts", "MainPage");
         }
+        [HttpGet]
         public ActionResult EditProduct(int id)
         {
             var product = this.productService.GetById(id);
             return this.View(product);
         }
+        [HttpPost]
         public ActionResult EditProduct(ProductDTO product)
         {
-           // var product = this.productService.GetById(id);
-            return this.View(product);
+           this.productService.Update(product);
+           return RedirectToAction("AllProducts","MainPage");
         }
     }
 }

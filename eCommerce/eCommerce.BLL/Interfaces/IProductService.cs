@@ -11,7 +11,7 @@
     public interface IProductService
     {
         void CreateProduct(ProductDTO ProductDTO);
-
+        void Update(ProductDTO pr);
         ProductDTO GetById(int? id);
 
         //IEnumerable<OrderDTO> GetAll();

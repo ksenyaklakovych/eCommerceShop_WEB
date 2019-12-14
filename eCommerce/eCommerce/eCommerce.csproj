@@ -278,6 +278,7 @@
     <Content Include="Views\MainPage\MainPageAdmin.cshtml" />
     <Content Include="Views\MainPage\AllProducts.cshtml" />
     <Content Include="Views\MainPage\EditProduct.cshtml" />
+    <Content Include="Views\User\AllUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

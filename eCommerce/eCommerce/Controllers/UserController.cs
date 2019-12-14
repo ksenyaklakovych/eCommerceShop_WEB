@@ -75,5 +75,11 @@ namespace eCommerce.Controllers
                 return this.View("Login");
             }
         }
+        [HttpGet]
+        public ActionResult AllUsers()
+        {
+            IEnumerable<UserDTO> users = this.userService.GetAll();
+            return this.View(users);
+        }
     }
 }
