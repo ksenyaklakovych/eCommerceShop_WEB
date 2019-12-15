@@ -1,58 +1,85 @@
 ﻿@model IEnumerable<eCommerce.Models.ProductOrderModel>
 
-@{
-    ViewBag.Title = "ShoppingCart";
-}
 
-<h2>ShoppingCart</h2>
-<p>
-    @Html.ActionLink("Continue shopping", "../MainPage/MainPage")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.totalPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quantity)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalPrice)
-            </td>
-            <td>
-                @using (Html.BeginForm("EditQuantity", "Order", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <input name="quantity" type="number" value="@item.quantity" />
-                    <input name="product_id" type="hidden" value="@item.productId" />
-                    <input type="submit" value="Update quantity" class="btn btn-default" />
-                }
-            </td>
-            <td>
-                @* @Html.ActionLink("Update quantity", "EditQuantity", new { product_id = item.productId }) |*@
-                @Html.ActionLink("Remove", "RemoveFromCart", new { product_id = item.productId })
-            </td>
-        </tr>
+<head>
+    @{
+        ViewBag.Title = "ShoppingCart";
     }
-</table>
-<p>Total: @ViewBag.totalPrice</p>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
-<input type="button" value="Checkout" onclick="location.href='@Url.Action("Checkout", "Order")'" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li> @Html.ActionLink("Main page", "../MainPage/MainPage")</li>
+                    <li> @Html.ActionLink("Open cart", "../Order/ShoppingCart")</li>
+                    <li> @Html.ActionLink("Shopping history", "../Order/History")</li>
+                    <li> @Html.ActionLink("Contact form", "../Contact/ContactForm")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.totalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalPrice)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("EditQuantity", "Order", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input name="quantity" type="number" value="@item.quantity" />
+                            <input name="product_id" type="hidden" value="@item.productId" />
+                            <input type="submit" value="Update quantity" class="btn btn-default" />
+                        }
+                    </td>
+                    <td>
+                        @* @Html.ActionLink("Update quantity", "EditQuantity", new { product_id = item.productId }) |*@
+                        @Html.ActionLink("Remove", "RemoveFromCart", new { product_id = item.productId })
+                    </td>
+                </tr>
+            }
+        </table>
+        <p>Total: @ViewBag.totalPrice</p>
+
+        <input type="button" value="Checkout" onclick="location.href='@Url.Action("Checkout", "Order")'" />
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>

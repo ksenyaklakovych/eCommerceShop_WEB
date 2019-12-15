@@ -1,90 +1,102 @@
 ﻿@model PagedList.IPagedList<eCommerce.Models.ProductViewModel>
 @using PagedList.Mvc;
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-@{
-    ViewBag.Title = "MainPage";
-}
+<head>
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    @{
+        ViewBag.Title = "MainPage";
+    }
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
-<h2>MainPage</h2>
-<p>
-    @Html.ActionLink("Open cart", "../Order/ShoppingCart")
-</p>
-<p>
-    @Html.ActionLink("Shopping history", "../Order/History")
-</p>
-<p>
-    @Html.ActionLink("Contact form","../Contact/ContactForm")
-</p>
-
-@using (Html.BeginForm("../MainPage/MainPage", "MainPageController", FormMethod.Get, new { @class = "form-horizontal" }))
-{
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                @Html.DropDownList("Category", "категорія")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-            <div class="col-md-2">
-                @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
-            </div>
-            <div class="col-md-2" id="btext">
-                <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li> @Html.ActionLink("Main page", "../MainPage/MainPage")</li>
+                    <li> @Html.ActionLink("Open cart", "../Order/ShoppingCart")</li>
+                    <li> @Html.ActionLink("Shopping history", "../Order/History")</li>
+                    <li> @Html.ActionLink("Contact form", "../Contact/ContactForm")</li>
+                </ul>
             </div>
         </div>
     </div>
-}
-<table class="table">
-    @*<tr>
-            <th>
-                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>
-                First Name
-            </th>
-            <th>
-                @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th></th>
-        </tr>*@
-    <tr>
-        <th>
-            @Html.ActionLink("Title", "MainPage", new { sortOrder = "title_desc" })
-        </th>
-        <th>
-            @Html.ActionLink("Price", "MainPage", new { sortOrder = "price_desc" })
-        </th>
-        <th>
-            @Html.ActionLink("Category", "MainPage", new { sortOrder = "category_desc" })
-        </th>
-        <th>
-            @Html.ActionLink("Rate", "MainPage", new { sortOrder = "rate_desc" })
-        </th>
-        <th></th>
-    </tr>
+    <div class="container body-content">
+        <hr />
+        @using (Html.BeginForm("../MainPage/MainPage", "MainPageController", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DropDownList("Category", "категорія")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2" id="btext">
+                        <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+                    </div>
+                </div>
+            </div>
+        }
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Title", "MainPage", new { sortOrder = "title_desc" })
+                </th>
+                <th>
+                    @Html.ActionLink("Price", "MainPage", new { sortOrder = "price_desc" })
+                </th>
+                <th>
+                    @Html.ActionLink("Category", "MainPage", new { sortOrder = "category_desc" })
+                </th>
+                <th>
+                    @Html.ActionLink("Rate", "MainPage", new { sortOrder = "rate_desc" })
+                </th>
+                <th></th>
+            </tr>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rate)
-        </td>
-        <td>
-            @Html.ActionLink("Add to cart", "../Order/AddToCart", new { productId = item.productId }) |
-            @Html.ActionLink("Details", "../Detail/ProductDetail", new { Id = item.productId }) |
-        </td>
-    </tr>
-    }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add to cart", "../Order/AddToCart", new { productId = item.productId }) |
+                        @Html.ActionLink("Details", "../Detail/ProductDetail", new { Id = item.productId }) |
+                    </td>
+                </tr>
+            }
 
-</table>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        </table>
+    </div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("MainPage",
-    new { page, sortOrder = ViewBag.CurrentSort}))
+    @Html.PagedListPager(Model, page => Url.Action("MainPage",
+        new { page, sortOrder = ViewBag.CurrentSort}))
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+
+
+

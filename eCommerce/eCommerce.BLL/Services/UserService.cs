@@ -89,6 +89,19 @@
                 this.Database.Save();
             }
         }
+        public void Update(UserDTO o)
+        {
+            User user = new User
+            {
+                userId = o.userId,
+                username = o.username,
+                password = o.password,
+                isAdmin = o.isAdmin,
+            };
+
+            this.Database.Users.Update(user);
+            this.Database.Save();
+        }
 
         public static string strKey = "U2A9/R*41FD412+4-123";
 

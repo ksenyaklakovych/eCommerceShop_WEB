@@ -269,10 +269,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\AddOrEdit.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\MainPage\MainPage.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\Order\AddToCart.cshtml" />
     <Content Include="Views\Order\ShoppingCart.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
     <Content Include="Views\Order\History.cshtml" />
@@ -284,6 +283,7 @@
     <Content Include="Views\Contact\ContactForm.cshtml" />
     <Content Include="Views\CreateProduct\CreateProduct.cshtml" />
     <Content Include="Views\User\AllUsers.cshtml" />
+    <Content Include="Views\User\EditUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

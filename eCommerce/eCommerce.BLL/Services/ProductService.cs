@@ -74,7 +74,9 @@
             };
 
             this.Database.Products.Update(product);
-          }
+            this.Database.Save();
+
+        }
 
         public ProductDTO GetById(int? id)
         {

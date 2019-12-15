@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Text;
+    using System.ComponentModel;
 
     public class ProductDTO
     {
@@ -22,12 +23,14 @@
         }
 
         public int productId { get; set; }
+
         public string title { get; set; }
 
         public int price { get; set; }
 
         public string category { get; set; }
 
+        [DisplayName("Enable comments ")]
         public bool commentsEnabled { get; set; }
 
     }

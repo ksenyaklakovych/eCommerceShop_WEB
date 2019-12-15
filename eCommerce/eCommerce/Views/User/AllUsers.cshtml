@@ -4,16 +4,10 @@
     ViewBag.Title = "AllUsers";
 }
 
-<h2>AllUsers</h2>
+<h2>All users</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.userId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.username)
         </th>
@@ -29,9 +23,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.userId)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.username)
         </td>
         <td>
@@ -41,8 +32,8 @@
             @Html.DisplayFor(modelItem => item.isAdmin)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.userId}) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.userId })
+            @Html.ActionLink("Edit", "EditUser", new {  id=item.userId}) |
+            @Html.ActionLink("Delete", "DeleteUser", new { id = item.userId })
         </td>
     </tr>
 }

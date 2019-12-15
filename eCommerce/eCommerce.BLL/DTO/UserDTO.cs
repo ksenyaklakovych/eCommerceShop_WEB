@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Text;
+    using System.ComponentModel;
 
     public class UserDTO
     {
@@ -26,6 +27,7 @@
 
         public string password { get; set; }
 
+        [DisplayName("Is admin ")]
         public bool isAdmin { get; set; }
 
     }
