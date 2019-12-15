@@ -193,6 +193,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateProductController.cs" />
+    <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Views\Contact\ContactForm.cshtml" />
     <Content Include="Views\CreateProduct\CreateProduct.cshtml" />
     <Content Include="Views\User\AllUsers.cshtml" />
+    <Content Include="Views\Delivery\DeliveryDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

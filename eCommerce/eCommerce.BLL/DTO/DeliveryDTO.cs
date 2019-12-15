@@ -8,10 +8,7 @@
 
     public partial class DeliveryDTO
     {
-        public DeliveryDTO()
-        {
-
-        }
+        public DeliveryDTO() { }
 
         public DeliveryDTO(int deliveryId, int totalPrice, string paymentType, string fullName, string address)
         {
