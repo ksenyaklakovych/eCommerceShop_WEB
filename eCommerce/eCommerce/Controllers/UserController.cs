@@ -21,13 +21,13 @@ namespace eCommerce.Controllers
             this.userService = serv;
         }
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult Register(int id = 0)
         {
             UserViewModel userModel = new UserViewModel();
             return this.View(userModel);
         }
         [HttpPost]
-        public ActionResult AddOrEdit(UserViewModel userModel)
+        public ActionResult Register(UserViewModel userModel)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace eCommerce.Controllers
             catch (ArgumentNullException)
             {
                 this.ViewBag.DuplicateMessage = "Таке і'мя користувача вже існує.";
-                return this.View("AddOrEdit");
+                return this.View("Register");
             }
         }
 
@@ -80,6 +80,20 @@ namespace eCommerce.Controllers
         {
             IEnumerable<UserDTO> users = this.userService.GetAll();
             return this.View(users);
+        }
+
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            var user = this.userService.GetById(id);
+            return this.View(user);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(UserDTO user)
+        {
+            this.userService.Update(user);
+            return RedirectToAction("AllUsers", "User");
         }
     }
 }

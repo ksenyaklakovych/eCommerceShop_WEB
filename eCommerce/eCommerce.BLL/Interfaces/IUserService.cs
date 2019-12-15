@@ -20,6 +20,8 @@
 
         void Dispose(int id);
 
+        void Update(UserDTO id);
+
         int FindMaxId();
     }
 }

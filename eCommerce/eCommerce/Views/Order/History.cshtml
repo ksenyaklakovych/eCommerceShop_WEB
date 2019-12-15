@@ -1,59 +1,85 @@
 ﻿@model IEnumerable<eCommerce.Models.ProductOrderModel>
 
-@{
-    ViewBag.Title = "Shopping history";
-}
+<head>
+    @{
+        ViewBag.Title = "Shopping history";
+    }
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
-<h2>Shopping history</h2>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li> @Html.ActionLink("Main page", "../MainPage/MainPage")</li>
+                    <li> @Html.ActionLink("Open cart", "../Order/ShoppingCart")</li>
+                    <li> @Html.ActionLink("Shopping history", "../Order/History")</li>
+                    <li> @Html.ActionLink("Contact form", "../Contact/ContactForm")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.totalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.payed)
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Back to main page", "../MainPage/MainPage")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.totalPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.payed)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.totalPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.payed)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.productId }) |
-            @if (item.commentsEnabled == true)
+            @foreach (var item in Model)
             {
-                @Html.ActionLink("Write a review", "../Review/AddReview", new { id = item.productId })
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.payed)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+                        @if (item.commentsEnabled == true)
+                        {
+                            @Html.ActionLink("Write a review", "../Review/AddReview", new { id = item.productId })
+                        }
+                    </td>
+                </tr>
             }
-        </td>
-    </tr>
-}
 
-</table>
+        </table>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>

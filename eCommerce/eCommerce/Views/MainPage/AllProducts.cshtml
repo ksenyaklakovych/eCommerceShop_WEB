@@ -1,56 +1,95 @@
 ﻿@model IEnumerable<eCommerce.BLL.DTO.ProductDTO>
+<head>
+    @{
+        ViewBag.Title = "AllProducts";
+    }
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
-@{
-    ViewBag.Title = "AllProducts";
-}
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Global main page", "../MainPage/MainPage")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Create a product", "../CreateProduct/CreateProduct")
+                    </li>
+                    <li>
+                        @Html.ActionLink("View all products", "../MainPage/AllProducts")
+                    </li>
+                    <li>
+                        @Html.ActionLink("View all comments", "../Comment/AllComments")
+                    </li>
+                    <li>
+                        @Html.ActionLink("View all deliveries", "../Delivery/AllDeliveries")
+                    </li>
+                    <li>
+                        @Html.ActionLink("View all users", "../User/AllUsers")
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <h2>All products</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.productId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.commentsEnabled)
+                </th>
+                <th></th>
+            </tr>
 
-<h2>All products</h2>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.productId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.commentsEnabled)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditProduct", new { id = item.productId }) |
+                        @Html.ActionLink("Delete", "DeleteProduct", new { id = item.productId })
+                    </td>
+                </tr>
+            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.productId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.commentsEnabled)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.productId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.commentsEnabled)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditProduct", new { id = item.productId }) |
-            @Html.ActionLink("Delete", "DeleteProduct", new {  id=item.productId  })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
