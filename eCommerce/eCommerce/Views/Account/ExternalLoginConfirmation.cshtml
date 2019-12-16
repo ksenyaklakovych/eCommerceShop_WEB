@@ -1,4 +1,4 @@
-﻿@model eCommerce.Models.ExternalLoginConfirmationViewModel
+﻿@model eCommerce.Models.UserViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -18,10 +18,17 @@
         logging in.
     </p>
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.username, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
