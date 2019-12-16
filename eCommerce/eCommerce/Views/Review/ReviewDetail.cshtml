@@ -1,9 +1,10 @@
-﻿@model IEnumerable<eCommerce.BLL.DTO.UserDTO>
+﻿@model IEnumerable<eCommerce.BLL.DTO.CommentDTO>
+
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     @{
-        ViewBag.Title = "AllUsers";
+        ViewBag.Title = "ReviewDetail";
     }
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -50,18 +51,10 @@
         </div>
     </div>
     <div class="container body-content">
-        <h2><i class="fa fa-user"></i> All users</h2>
-
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.username)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.password)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.isAdmin)
+                    @Html.DisplayNameFor(model => model.message)
                 </th>
                 <th></th>
             </tr>
@@ -70,17 +63,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.username)
+                        @Html.DisplayFor(modelItem => item.message)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.password)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.isAdmin)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "EditUser", new { id = item.userId }) |
-                        @Html.ActionLink("Delete", "DeleteUser", new { id = item.userId })
+                        @Html.ActionLink("Delete", "DeleteReview", new { id = item.commentId })
                     </td>
                 </tr>
             }
