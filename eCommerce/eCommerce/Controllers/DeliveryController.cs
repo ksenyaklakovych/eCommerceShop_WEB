@@ -26,6 +26,11 @@ namespace eCommerce.Controllers
             this.deliveryService = dels;
         }
         //[HttpGet]
+        public ActionResult DeleteDelivery(int id)
+        {
+            deliveryService.Dispose(id);
+            return RedirectToAction("DeliveryDetail");
+        }
         public ActionResult DeliveryDetail()
         {
             //var prod = (deliveryService.GetAll().Where(a => a.deliveryId == Id).First());
