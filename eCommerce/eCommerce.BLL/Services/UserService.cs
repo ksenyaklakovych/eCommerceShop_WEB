@@ -181,7 +181,7 @@
         {
             try
             {
-                var user = this.Database.Users.GetbyPass(username,password);
+                var user = this.Database.Users.GetbyPass(username,Encrypt(password));
                 return new UserDTO
                 {
                     userId = user.userId,
