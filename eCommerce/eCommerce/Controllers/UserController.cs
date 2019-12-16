@@ -32,6 +32,7 @@ namespace eCommerce.Controllers
             try
             {
                 userModel.userId = this.userService.FindMaxId() + 1;
+                userModel.isAdmin = false;
                 var userDto = new UserDTO(userModel.userId, userModel.username, userModel.password, userModel.isAdmin);
                 this.userService.CreateUser(userDto);
                 return this.RedirectToAction("Login", "User");
@@ -39,7 +40,7 @@ namespace eCommerce.Controllers
             }
             catch (ArgumentNullException)
             {
-                this.ViewBag.DuplicateMessage = "Таке і'мя користувача вже існує.";
+                this.ViewBag.DuplicateMessage = "Choose different username.";
                 return this.View("Register");
             }
         }
@@ -71,9 +72,17 @@ namespace eCommerce.Controllers
             }
             else
             {
-                this.ViewBag.DuplicateMessage = "Неправильне і'мя користувача або пароль.";
+                this.ViewBag.DuplicateMessage = "Incorrect username or password.";
                 return this.View("Login");
             }
+        }
+        public ActionResult LogOut()
+        {
+            this.Session["User_ID"] = null;
+            this.Session["Username"] = null;
+            this.Session["Password"] = null;
+            this.Session["isAdmin"] = null;
+            return this.View("Login");
         }
         [HttpGet]
         public ActionResult AllUsers()
@@ -93,6 +102,23 @@ namespace eCommerce.Controllers
         public ActionResult EditUser(UserDTO user)
         {
             this.userService.Update(user);
+            return RedirectToAction("AllUsers", "User");
+        }
+
+        public ActionResult DeleteUser(int id)
+        {
+            var allComentsToThisUser = this.userService.GetAllComments().Where(e => e.userId == id);
+            foreach (var item in allComentsToThisUser)
+            {
+                this.userService.DisposeComment(item.commentId);
+            }
+            var allOrdersToThisUser = this.userService.GetAllOrders().Where(e => e.userId == id);
+            foreach (var item in allOrdersToThisUser)
+            {
+                this.userService.DisposeOrder(item.orderId);
+            }
+            this.userService.Dispose(id);
+
             return RedirectToAction("AllUsers", "User");
         }
     }

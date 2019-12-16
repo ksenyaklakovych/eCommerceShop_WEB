@@ -1,51 +1,76 @@
 ﻿@model eCommerce.Models.ProductViewModel
-
-@{
-    ViewBag.Title = "ProductDetail";
-}
-
-@*<h2>ProductDetail</h2>*@
-
-<div>
-    @*<h4>ProductViewModel</h4>*@
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.category)
-        </dd>
-    </dl>
-</div>
-
-<div class="col-md-8">
-    @if (ViewBag.RelaventComments != null)
-    {
-        foreach (var i in ViewBag.RelaventComments)
-        {
-            <p>@i.message</p>
-        }
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    @{
+        ViewBag.Title = "ProductDetail";
     }
-</div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-    @Html.ActionLink("Back to List", "../MainPage/MainPage")
-</p>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="fa fa-user fa-lg" aria-hidden="true"> @Session["Username"]</a>
+                    </li>
+                    <li> @Html.ActionLink("Main page", "../MainPage/MainPage")</li>
+                    <li> @Html.ActionLink("Open cart", "../Order/ShoppingCart")</li>
+                    <li> @Html.ActionLink("Shopping history", "../Order/History")</li>
+                    <li> @Html.ActionLink("Contact form", "../Contact/ContactForm")</li>
+                    <li> @Html.ActionLink("Logout", "../User/Logout")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="card bg-light " id="tripDetail">
+            <article class="card-body mx-auto" style="max-width: 600px;">
+                <h1 class="card-title mt-3 text-center" style="color:goldenrod"> <i class="fa fa-shopping-bag"></i>@Html.DisplayFor(modelItem => modelItem.title)</h1>
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <h3 style="color:yellowgreen">
+                            Price: @Html.DisplayFor(model => model.price) ₴
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <h3 style="color:yellowgreen">
+                            Category: @Html.DisplayFor(model => model.category)
+                        </h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-primary btn-block btn-warning">
+                            @Html.ActionLink("Add to cart", "../Order/AddToCart", new { productId = Model.productId })
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <div class="col-md-8 text-center">
+                    @if (ViewBag.RelaventComments != null)
+                    {
+                    <h4 style="color:#069"><span class="iconify" data-icon="fa-regular:comment-alt" data-inline="false"></span> Reviews to this product:</h4>
+                        foreach (var i in ViewBag.RelaventComments)
+                        {
+                            <li>@i.message</li>
+                        }
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+

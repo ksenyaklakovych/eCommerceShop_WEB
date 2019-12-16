@@ -14,8 +14,10 @@
 
         public int userId { get; set; }
 
+        [DisplayName("Your comment")]
         public string message { get; set; }                                                                                                                                                            
 
+        [DisplayName("Rate")]
         public int rate {get; set; }
     }
 }
