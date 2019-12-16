@@ -24,16 +24,25 @@
         public int productId { get; set; }
         public int userId { get; set; }
 
+        [DisplayName("Title")]
         public string title { get; set; }
 
+        [DisplayName("Price")]
         public int price { get; set; }
 
+        [DisplayName("Category")]
         public string category { get; set; }
 
+        [DisplayName("Comments enabled")]
         public bool commentsEnabled { get; set; }
+
+        [DisplayName("Quantity")]
         public int quantity { get; set; }
+
+        [DisplayName("Total price")]
         public int totalPrice { get; set; }
 
+        [DisplayName("Is payed")]
         public bool payed { get; set; }
     }
 }

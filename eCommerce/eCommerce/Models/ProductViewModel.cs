@@ -10,13 +10,19 @@
     public class ProductViewModel
     {
         public int productId { get; set; }
+        [DisplayName("Product title")]
         public string title { get; set; }
 
+        [DisplayName("Price")]
         public int price { get; set; }
 
+        [DisplayName("Category")]
         public string category { get; set; }
 
+        [DisplayName("Enable comments?")]
         public bool commentsEnabled { get; set; }
+
+        [DisplayName("Initial rate")]
         public int rate { get; set; }
 
         public ProductViewModel()

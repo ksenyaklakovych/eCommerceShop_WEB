@@ -17,8 +17,12 @@
         UserDTO GetByUsernamePassword(string username, string password);
 
         IEnumerable<UserDTO> GetAll();
+        IEnumerable<OrderDTO> GetAllOrders();
+        IEnumerable<CommentDTO> GetAllComments();
 
         void Dispose(int id);
+        void DisposeComment(int id);
+        void DisposeOrder(int id);
 
         void Update(UserDTO id);
 

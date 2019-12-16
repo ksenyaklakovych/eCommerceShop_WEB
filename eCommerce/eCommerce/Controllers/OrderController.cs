@@ -29,8 +29,9 @@ namespace eCommerce.Controllers
         }
         public ActionResult ShoppingCart()
         {
+            int userId = int.Parse(Session["User_ID"].ToString());
             IEnumerable<ProductDTO> products = this.orderService.GetAllProducts();
-            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders();
+            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e=>e.userId==userId);
 
             List<ProductOrderModel> productOrderModels = (from pr in products
                                                           from o in orders
@@ -134,8 +135,9 @@ namespace eCommerce.Controllers
 
         public ActionResult History()
         {
+            int userId = int.Parse(Session["User_ID"].ToString());
             IEnumerable<ProductDTO> products = this.orderService.GetAllProducts();
-            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders();
+            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e => e.userId == userId) ;
 
             List<ProductOrderModel> productOrderModels = (from pr in products
                                                           from o in orders
