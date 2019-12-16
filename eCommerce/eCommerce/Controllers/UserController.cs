@@ -33,6 +33,7 @@ namespace eCommerce.Controllers
             {
                 userModel.userId = this.userService.FindMaxId() + 1;
                 userModel.isAdmin = false;
+                userModel.password = Helper.Encrypt(userModel.password);
                 var userDto = new UserDTO(userModel.userId, userModel.username, userModel.password, userModel.isAdmin);
                 this.userService.CreateUser(userDto);
                 return this.RedirectToAction("Login", "User");
@@ -45,6 +46,19 @@ namespace eCommerce.Controllers
             }
         }
 
+        public ActionResult Account(int id)
+        {
+            var userAccount = this.userService.GetById(id);
+            var viewModel = new UserViewModel
+            {
+                userId = userAccount.userId,
+                username = userAccount.username,
+                password = userAccount.password,
+                isAdmin = userAccount.isAdmin,
+            };
+
+            return this.View(viewModel);
+        }
         [HttpGet]
         public ActionResult Login()
         {
