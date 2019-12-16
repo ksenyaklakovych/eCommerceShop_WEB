@@ -1,4 +1,5 @@
-﻿@model eCommerce.Models.UserViewModel
+﻿@using eCommerce.Models
+@model eCommerce.Models.UserViewModel
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @{
@@ -6,46 +7,55 @@
     }
 </head>
 <body>
-    @using (Html.BeginForm("Login", "User", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-8">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <h2>Login</h2>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-horizontal">
-            <h2>Login</h2>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
-                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Log in </button>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <label class="label-danger">@ViewBag.DuplicateMessage</label>
-                </div>
-            </div>
-            <p class="text-center">Don't have an account? @Html.ActionLink("Register", "Register")</p>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-2">
+                                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Log in </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-2">
+                                <label class="label-danger">@ViewBag.DuplicateMessage</label>
+                            </div>
+                        </div>
+                        <p class="text-center">Don't have an account? @Html.ActionLink("Register", "Register")</p>
+                    </div>
+                }
+            </section>
         </div>
-    }
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+    </div>
 </body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

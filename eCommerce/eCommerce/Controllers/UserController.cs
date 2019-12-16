@@ -45,7 +45,52 @@ namespace eCommerce.Controllers
                 return this.View("Register");
             }
         }
-
+        [HttpGet]
+        public ActionResult RegisterWebsite(string username)
+        {
+            try
+            {
+                var user=userService.GetAll().Where(e => e.username == username).Select(e=>e.password).First();
+                var obj = this.userService.GetByUsernamePassword(username, user);
+                if (obj != null && obj.isAdmin == true)
+                {
+                    this.Session["isAdmin"] = "true";
+                    this.Session["User_ID"] = obj.userId.ToString();
+                    this.Session["Username"] = obj.username.ToString();
+                    this.Session["Password"] = obj.password.ToString();
+                    return this.RedirectToAction("MainPageAdmin", "MainPage");
+                }
+                else
+                {
+                    this.Session["User_ID"] = obj.userId.ToString();
+                    this.Session["Username"] = obj.username.ToString();
+                    this.Session["Password"] = obj.password.ToString();
+                    return this.RedirectToAction("MainPage", "MainPage");
+                }
+            }
+            catch (Exception)
+            {
+                UserViewModel userModel = new UserViewModel();
+                return this.View(userModel);
+            }
+        }
+        [HttpPost]
+        public ActionResult RegisterWebsite(UserViewModel userModel)
+        {
+            try
+            {
+                var user = userService.GetAll().Where(e => e.username == userModel.username).First();
+                this.Session["isAdmin"] = "true";
+                this.Session["User_ID"] = user.userId.ToString();
+                this.Session["Username"] = user.username.ToString();
+                this.Session["Password"] = user.password.ToString();
+                return this.RedirectToAction("MainPage", "MainPage");
+            }
+            catch (Exception)
+            {
+                return this.View("Register");
+            }
+        }
         public ActionResult Account(int id)
         {
             var userAccount = this.userService.GetById(id);

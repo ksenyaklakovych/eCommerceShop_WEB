@@ -79,6 +79,7 @@
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<User>, List<UserDTO>>(this.Database.Users.GetAll());
         }
+
         public IEnumerable<OrderDTO> GetAllOrders()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>()).CreateMapper();

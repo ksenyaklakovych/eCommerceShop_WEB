@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44370</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -191,11 +191,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CreateProductController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\Helper.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -204,8 +206,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductOrderModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -288,10 +293,14 @@
     <Content Include="Views\User\AllUsers.cshtml" />
     <Content Include="Views\Delivery\DeliveryDetail.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
+    <Content Include="Views\User\RegisterWebsite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AccountViewModels\" />
     <Folder Include="Views\Helper\" />
+    <Folder Include="Views\IdentityModels\" />
+    <Folder Include="Views\ManageViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -330,7 +339,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53071</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53071/</IISUrl>
+          <IISUrl>https://localhost:44370/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
