@@ -25,7 +25,6 @@ namespace eCommerce.Controllers
         {
             this.deliveryService = dels;
         }
-        //[HttpGet]
         public ActionResult DeleteDelivery(int id)
         {
             deliveryService.Dispose(id);
@@ -33,11 +32,6 @@ namespace eCommerce.Controllers
         }
         public ActionResult DeliveryDetail()
         {
-            //var prod = (deliveryService.GetAll().Where(a => a.deliveryId == Id).First());
-            //ViewModel detailProduct = new ProductViewModel(prod.productId, prod.title, prod.price, prod.category, prod.commentsEnabled);
-            //var commments = deliveryService.().Where(a => a.productId == Id);
-            //ViewBag.RelaventComments = commments;
-            //return View(detailProduct);
             IEnumerable<DeliveryDTO> deliveries = this.deliveryService.GetAll();
             return this.View(deliveries);
         }

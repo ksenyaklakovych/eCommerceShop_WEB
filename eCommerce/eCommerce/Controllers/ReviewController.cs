@@ -65,5 +65,17 @@
             }
 
         }
+
+        public ActionResult DeleteReview(int id)
+        {
+            commentService.Dispose(id);
+            return RedirectToAction("ReviewDetail");
+        }
+
+        public ActionResult ReviewDetail()
+        {
+            IEnumerable<CommentDTO> comments = this.commentService.GetAll();
+            return this.View(comments);
+        }
     }
 }
