@@ -242,14 +242,6 @@ namespace eCommerce.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            //try
-            //{
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
@@ -272,7 +264,7 @@ namespace eCommerce.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return View("ExternalLoginConfirmation", new UserViewModel { username = loginInfo.Email, password=loginInfo.DefaultUserName });
             }
         }
 
@@ -290,37 +282,19 @@ namespace eCommerce.Controllers
                 this.Session["User_ID"] = user.userId.ToString();
                 this.Session["Username"] = user.username.ToString();
                 this.Session["Password"] = user.password.ToString();
-                return RedirectToAction("MainPage", "MainPage");
+                return RedirectToAction("GetInfo", "User", new { username=user.username,password=user.password});
             }
 
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                //var user = new UserViewModel { userId = model.userId, username = model.username, password = model.password, isAdmin = model.isAdmin };
 
                 if (info == null)
                 {
                     return View("ExternalLoginFailure");
                 }
-                //model.userId = this.userService.FindMaxId() + 1;
-                //model.isAdmin = false;
-                //model.password = Helper.Encrypt(model.password);
-                //var userDto = new UserDTO(model.userId, model.username, model.password, userModel.isAdmin);
-                //this.userService.CreateUser(userDto);
-                //return RedirectToAction("Register", "User");
-                
-                //var result = await UserManager.CreateAsync(user);
-                //if (result.Succeeded)
-                //{
-                //    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                //    if (result.Succeeded)
-                //    {
-                //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 return RedirectToLocal("",returnUrl);
-                //    }
-                //}
-                //AddErrors(result);
             }
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
@@ -390,10 +364,6 @@ namespace eCommerce.Controllers
             {
                 return Redirect(returnUrl);
             }
-            //var user = new UserViewModel { userId = 2, username = "kse", password = "joijo", isAdmin = false };
-            //this.Session["User_ID"] = user.userId.ToString();
-            //this.Session["Username"] = user.username.ToString();
-            //this.Session["Password"] = user.password.ToString();
             return RedirectToAction("RegisterWebsite", "User", new { username= email });
         }
 

@@ -57,14 +57,12 @@ namespace eCommerce.Controllers
                     this.Session["isAdmin"] = "true";
                     this.Session["User_ID"] = obj.userId.ToString();
                     this.Session["Username"] = obj.username.ToString();
-                    this.Session["Password"] = obj.password.ToString();
                     return this.RedirectToAction("MainPageAdmin", "MainPage");
                 }
                 else
                 {
                     this.Session["User_ID"] = obj.userId.ToString();
                     this.Session["Username"] = obj.username.ToString();
-                    this.Session["Password"] = obj.password.ToString();
                     return this.RedirectToAction("MainPage", "MainPage");
                 }
             }
@@ -72,6 +70,28 @@ namespace eCommerce.Controllers
             {
                 UserViewModel userModel = new UserViewModel();
                 return this.View(userModel);
+            }
+        }
+        public ActionResult GetInfo(string username, string password)
+        {
+            try
+            {
+                var p = userService.GetAll().Where(e => e.username == username).Select(e => e.password).First();
+                var user = this.userService.GetByUsernamePassword(username, p);
+                this.Session["User_ID"] = user.userId.ToString();
+                this.Session["Username"] = user.username.ToString();
+                return this.RedirectToAction("MainPage", "MainPage");
+            }
+            catch (Exception)
+            {
+                int userId = this.userService.FindMaxId() + 1;
+                bool isAdmin = false;
+                string pass = Helper.Encrypt(password);
+                var userDto = new UserDTO(userId, username, pass, isAdmin);
+                this.userService.CreateUser(userDto);
+                this.Session["User_ID"] = userId.ToString();
+                this.Session["Username"] = username.ToString();
+                return this.RedirectToAction("MainPage", "MainPage");
             }
         }
         [HttpPost]
@@ -83,7 +103,6 @@ namespace eCommerce.Controllers
                 this.Session["isAdmin"] = "true";
                 this.Session["User_ID"] = user.userId.ToString();
                 this.Session["Username"] = user.username.ToString();
-                this.Session["Password"] = user.password.ToString();
                 return this.RedirectToAction("MainPage", "MainPage");
             }
             catch (Exception)
@@ -119,14 +138,12 @@ namespace eCommerce.Controllers
                 this.Session["isAdmin"] = "true";
                 this.Session["User_ID"] = obj.userId.ToString();
                 this.Session["Username"] = obj.username.ToString();
-                this.Session["Password"] = obj.password.ToString();
                 return this.RedirectToAction("MainPageAdmin", "MainPage");
             }
             else if (obj != null)
             {
                 this.Session["User_ID"] = obj.userId.ToString();
                 this.Session["Username"] = obj.username.ToString();
-                this.Session["Password"] = obj.password.ToString();
                 return this.RedirectToAction("MainPage", "MainPage");
             }
             else
@@ -139,7 +156,6 @@ namespace eCommerce.Controllers
         {
             this.Session["User_ID"] = null;
             this.Session["Username"] = null;
-            this.Session["Password"] = null;
             this.Session["isAdmin"] = null;
             return this.View("Login");
         }

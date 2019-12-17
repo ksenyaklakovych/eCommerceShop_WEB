@@ -6,8 +6,9 @@ namespace eCommerce.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "username")]
+        public string username { get; set; }
+        public string password { get; set; }
     }
 
     public class ExternalLoginListViewModel
