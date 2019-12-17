@@ -31,7 +31,18 @@ namespace eCommerce.Controllers
             contact.contactId = ContactService.FindMaxId()+1;
             ContactService.CreateContact(new ContactDTO(contact.contactId,contact.fullName,contact.email,contact.message));
             return RedirectToAction("MainPage","MainPage");
-        }   
+        }
+
+        public ActionResult DeleteContact(int id)
+        {
+            ContactService.Dispose(id);
+            return RedirectToAction("ContactDetail");
+        }
+        public ActionResult ContactDetail()
+        {
+            IEnumerable<ContactDTO> contacts = this.ContactService.GetAll();
+            return this.View(contacts);
+        }
 
     }
 }

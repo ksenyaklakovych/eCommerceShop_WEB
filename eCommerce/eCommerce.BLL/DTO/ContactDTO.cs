@@ -8,10 +8,7 @@
 
     public class ContactDTO
     {
-        public ContactDTO()
-        {
-
-        }
+        public ContactDTO() { }
 
         public ContactDTO( int contactId, string fullName, string email, string message) 
         {
