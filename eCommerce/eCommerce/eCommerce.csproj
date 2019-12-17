@@ -295,6 +295,7 @@
     <Content Include="Views\User\EditUser.cshtml" />
     <Content Include="Views\Review\ReviewDetail.cshtml" />
     <Content Include="Views\User\RegisterWebsite.cshtml" />
+    <Content Include="Views\Contact\ContactDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
