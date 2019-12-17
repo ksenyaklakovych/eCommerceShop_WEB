@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @{
-        ViewBag.Title = "Register";
+        ViewBag.Title = "Log in";
     }
 </head>
 <body>
@@ -11,7 +11,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <p>Please, confirm logging into the website...</p>
+            <h3>Please, confirm logging into the website...</h3>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-2">
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Register </button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Comtinue </button>
                 </div>
             </div>
 

@@ -58,11 +58,11 @@ namespace eCommerce
                 appId: "495548951317422",
                appSecret: "26e6fa9980699906e6a9f52040fe0c19");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1039875366246-kglt48o41sr4dj2m86rul6jovckj9inh.apps.googleusercontent.com",
+                ClientSecret = "rtomravWWUmPPJckdIrcS92b"
+            });
         }
     }
 }
