@@ -50,7 +50,7 @@ namespace eCommerce.Controllers
         {
             try
             {
-                var user=userService.GetAll().Where(e => e.username == username).Select(e=>e.password).First();
+                var user = userService.GetAll().Where(e => e.username == username).Select(e => e.password).First();
                 var obj = this.userService.GetByUsernamePassword(username, user);
                 if (obj != null && obj.isAdmin == true)
                 {
@@ -133,7 +133,7 @@ namespace eCommerce.Controllers
         public ActionResult Login(UserViewModel userModel)
         {
             var obj = this.userService.GetByUsernamePassword(userModel.username, userModel.password);
-            if (obj != null && obj.isAdmin==true)
+            if (obj != null && obj.isAdmin == true)
             {
                 this.Session["isAdmin"] = "true";
                 this.Session["User_ID"] = obj.userId.ToString();

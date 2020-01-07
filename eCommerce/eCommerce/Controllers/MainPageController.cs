@@ -26,11 +26,11 @@
         }
         public ActionResult MainPage(int? page, string sortOrder, string Category, string maxPrice)
         {
-            //ViewBag.CurrentSort = sortOrder;
-            //ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
-            //ViewBag.PriceSortParm = (sortOrder == "Price" )? "price_desc" : "";
-            //ViewBag.CategorySortParm = (sortOrder == "Category" )? "category_desc" : "";
-            //ViewBag.RateSortParm = (sortOrder == "Rate") ? "rate_desc" : "";
+            ////ViewBag.CurrentSort = sortOrder;
+            ////ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ////ViewBag.PriceSortParm = (sortOrder == "Price" )? "price_desc" : "";
+            ////ViewBag.CategorySortParm = (sortOrder == "Category" )? "category_desc" : "";
+            ////ViewBag.RateSortParm = (sortOrder == "Rate") ? "rate_desc" : "";
 
             IEnumerable<ProductDTO> p = this.productService.GetAll();
             IEnumerable<RateDTO> rates = this.productService.GetAllRates();
@@ -124,9 +124,9 @@
         [HttpPost]
         public ActionResult EditProduct(ProductDTO product)
         {
-           this.productService.Update(product);
-           return RedirectToAction("AllProducts","MainPage");
+            this.productService.Update(product);
+            return RedirectToAction("AllProducts", "MainPage");
         }
-        
+
     }
 }

@@ -31,7 +31,7 @@ namespace eCommerce.Controllers
         {
             int userId = int.Parse(Session["User_ID"].ToString());
             IEnumerable<ProductDTO> products = this.orderService.GetAllProducts();
-            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e=>e.userId==userId);
+            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e => e.userId == userId);
 
             List<ProductOrderModel> productOrderModels = (from pr in products
                                                           from o in orders
@@ -79,7 +79,7 @@ namespace eCommerce.Controllers
             int user_session = int.Parse(Session["User_ID"].ToString());
             var orders = this.orderService.GetAllOrders().Where(e => e.productId == product_id && e.userId == user_session).Select(e => e.orderId).ToList();
             int number_prev = orders.Count();
-            if (number_prev<quantity)
+            if (number_prev < quantity)
             {
                 int difference = quantity - number_prev;
                 for (int i = 0; i < difference; i++)
@@ -88,7 +88,7 @@ namespace eCommerce.Controllers
                     this.orderService.CreateOrder(new OrderDTO(order_id, user_session, product_id, 1, false));
                 }
             }
-            else if(number_prev > quantity)
+            else if (number_prev > quantity)
             {
                 int difference = number_prev - quantity;
                 for (int i = 0; i < difference; i++)
@@ -96,7 +96,7 @@ namespace eCommerce.Controllers
                     this.orderService.Dispose(orders[i]);
                 }
             }
-            
+
             return this.RedirectToAction("ShoppingCart", "Order");
         }
 
@@ -137,7 +137,7 @@ namespace eCommerce.Controllers
         {
             int userId = int.Parse(Session["User_ID"].ToString());
             IEnumerable<ProductDTO> products = this.orderService.GetAllProducts();
-            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e => e.userId == userId) ;
+            IEnumerable<OrderDTO> orders = this.orderService.GetAllOrders().Where(e => e.userId == userId);
 
             List<ProductOrderModel> productOrderModels = (from pr in products
                                                           from o in orders

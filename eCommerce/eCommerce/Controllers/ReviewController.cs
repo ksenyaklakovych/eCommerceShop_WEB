@@ -42,7 +42,7 @@
         [HttpPost]
         public ActionResult AddReview(int id, CommentViewModel commentViewModel)
         {
-            int session_id= int.Parse(this.Session["User_ID"].ToString());
+            int session_id = int.Parse(this.Session["User_ID"].ToString());
             try
             {
                 this.commentService.GetAll().Where(c => c.productId == id && c.userId == session_id).First();

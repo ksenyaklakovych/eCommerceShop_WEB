@@ -85,7 +85,7 @@ namespace eCommerce.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal("",returnUrl);
+                    return RedirectToLocal("", returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -130,7 +130,7 @@ namespace eCommerce.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal("",model.ReturnUrl);
+                    return RedirectToLocal("", model.ReturnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
@@ -247,14 +247,14 @@ namespace eCommerce.Controllers
             {
                 return RedirectToAction("Login");
             }
-           
-            // Sign in the user with this external login provider if the user already has a login
+
+            //// Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    //redirecting to login here
-                    return RedirectToLocal(loginInfo.Email,returnUrl);
+                    ///redirecting to login here
+                    return RedirectToLocal(loginInfo.Email, returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -264,7 +264,7 @@ namespace eCommerce.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new UserViewModel { username = loginInfo.Email, password=loginInfo.DefaultUserName });
+                    return View("ExternalLoginConfirmation", new UserViewModel { username = loginInfo.Email, password = loginInfo.DefaultUserName });
             }
         }
 
@@ -282,7 +282,7 @@ namespace eCommerce.Controllers
                 this.Session["User_ID"] = user.userId.ToString();
                 this.Session["Username"] = user.username.ToString();
                 this.Session["Password"] = user.password.ToString();
-                return RedirectToAction("GetInfo", "User", new { username=user.username,password=user.password});
+                return RedirectToAction("GetInfo", "User", new { username = user.username, password = user.password });
             }
 
             if (ModelState.IsValid)
@@ -294,7 +294,7 @@ namespace eCommerce.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                return RedirectToLocal("",returnUrl);
+                return RedirectToLocal("", returnUrl);
             }
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
@@ -358,13 +358,13 @@ namespace eCommerce.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string email,string returnUrl)
+        private ActionResult RedirectToLocal(string email, string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("RegisterWebsite", "User", new { username= email });
+            return RedirectToAction("RegisterWebsite", "User", new { username = email });
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
