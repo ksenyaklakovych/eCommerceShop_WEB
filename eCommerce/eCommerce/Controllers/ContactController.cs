@@ -28,9 +28,9 @@ namespace eCommerce.Controllers
 
         public ActionResult ContactForm(ContactViewModel contact)
         {
-            contact.contactId = ContactService.FindMaxId()+1;
-            ContactService.CreateContact(new ContactDTO(contact.contactId,contact.fullName,contact.email,contact.message));
-            return RedirectToAction("MainPage","MainPage");
+            contact.contactId = ContactService.FindMaxId() + 1;
+            ContactService.CreateContact(new ContactDTO(contact.contactId, contact.fullName, contact.email, contact.message));
+            return RedirectToAction("MainPage", "MainPage");
         }
 
         public ActionResult DeleteContact(int id)

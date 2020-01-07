@@ -18,7 +18,7 @@
             this.commentsEnabled = commentsEnabled;
             this.quantity = quantity;
             this.payed = payed;
-            this.totalPrice= totalPrice;
+            this.totalPrice = totalPrice;
         }
 
         public int productId { get; set; }

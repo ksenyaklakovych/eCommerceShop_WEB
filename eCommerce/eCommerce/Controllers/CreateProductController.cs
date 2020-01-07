@@ -28,10 +28,10 @@ namespace eCommerce.Controllers
         public ActionResult CreateProduct(ProductViewModel product)
         {
             product.productId = ProductService.FindMaxId() + 1;
-            ProductService.CreateProduct(new ProductDTO(product.productId,product.title,product.price,product.category,product.commentsEnabled));
+            ProductService.CreateProduct(new ProductDTO(product.productId, product.title, product.price, product.category, product.commentsEnabled));
             int rateId = ProductService.FindMaxIdRate() + 1;
-            ProductService.CreateRate(new RateDTO(rateId,product.productId,product.rate));
-            return RedirectToAction("AllProducts","MainPage");
+            ProductService.CreateRate(new RateDTO(rateId, product.productId, product.rate));
+            return RedirectToAction("AllProducts", "MainPage");
         }
     }
 }
