@@ -56,7 +56,7 @@
             {
                rateID = o.rateID,
             productId = o.productId,
-            rate1 = o.rate1,
+            rate1 = o.rate,
             };
 
             this.Database.Rates.Create(d);

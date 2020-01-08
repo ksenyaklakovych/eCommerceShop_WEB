@@ -12,18 +12,18 @@
         {
         }
 
-        public RateDTO(int rateID, int productId, int rate1)
+        public RateDTO(int rateID, int productId, int rate)
         {
             this.rateID = rateID;
             this.productId = productId;
-            this.rate1 = rate1;
+            this.rate = rate;
         }
 
         public int rateID { get; set; }
 
         public int productId { get; set; }
 
-        public int rate1 { get; set; }
+        public int rate { get; set; }
 
     }
 }
