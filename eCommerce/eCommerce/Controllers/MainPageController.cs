@@ -37,7 +37,7 @@
             var rates_grouped = from r in rates
                                 group r by r.productId
                                 into rates_
-                                select new { product_id = rates_.Key, rate = rates_.Sum(e => e.rate1) / rates_.Count() };
+                                select new { product_id = rates_.Key, rate = rates_.Sum(e => e.rate) / rates_.Count() };
 
 
             IEnumerable<ProductViewModel> products = (from i in p
